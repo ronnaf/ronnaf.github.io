@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://ronnaf/./src/pages/home.tsx"],"names":[],"mappings":"0HAMA,UAJiB,WACf,OAAO","file":"component---src-pages-home-tsx-93727886f268b83cd47b.js","sourcesContent":["import React from 'react';\n\nconst HomePage = () => {\n  return <div>Hello world</div>;\n};\n\nexport default HomePage;\n"],"sourceRoot":""}

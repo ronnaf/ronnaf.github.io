@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { graphql } from 'gatsby';
+import { getImage, StaticImage, GatsbyImage } from 'gatsby-plugin-image';
+import React, { useRef, useState } from 'react';
 import { FiGithub, FiLink } from 'react-icons/fi';
+import { ProjectNode } from '../models/ProjectNode';
 
 const levelsOfInfo = [
   {
@@ -17,50 +19,7 @@ const levelsOfInfo = [
   },
 ];
 
-const projects = [
-  {
-    image: 'https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=large',
-    title: 'jiralist',
-    about: 'helps me manage my jira tickets for the daily standup at work',
-    tags: ['react', 'typescript', 'jira-rest-api'],
-    sourceCodeLink: 'example.com',
-    siteLink: 'example.com',
-  },
-  {
-    image: 'https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=large',
-    title: 'jiralist',
-    about: 'helps me manage my jira tickets for the daily standup at work',
-    tags: ['react', 'typescript', 'jira-rest-api'],
-    sourceCodeLink: 'example.com',
-    siteLink: 'example.com',
-  },
-  {
-    image: 'https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=large',
-    title: 'jiralist',
-    about: 'helps me manage my jira tickets for the daily standup at work',
-    tags: ['react', 'typescript', 'jira-rest-api'],
-    sourceCodeLink: 'example.com',
-    siteLink: 'example.com',
-  },
-  {
-    image: 'https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=large',
-    title: 'jiralist',
-    about: 'helps me manage my jira tickets for the daily standup at work',
-    tags: ['react', 'typescript', 'jira-rest-api'],
-    sourceCodeLink: 'example.com',
-    siteLink: 'example.com',
-  },
-  {
-    image: 'https://pbs.twimg.com/media/E1oMV3QVgAIr1NT?format=jpg&name=large',
-    title: 'jiralist',
-    about: 'helps me manage my jira tickets for the daily standup at work',
-    tags: ['react', 'typescript', 'jira-rest-api'],
-    sourceCodeLink: 'example.com',
-    siteLink: 'example.com',
-  },
-];
-
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const [levelIndex, setLevelIndex] = useState(0);
 
   const landingRef = useRef<HTMLDivElement>();
@@ -151,7 +110,9 @@ const IndexPage = () => {
           </div>
         </div>
         <div className='mt-20 text-white'>
-          {projects.map((project, i) => {
+          {data.allMarkdownRemark.nodes.map((node: ProjectNode, i) => {
+            const project = node.frontmatter;
+            const cover = getImage(node.frontmatter.cover);
             const isFirst = i === 0;
             return (
               <div key={`${project.title}_${i}`} className='grid grid-cols-5'>
@@ -159,12 +120,11 @@ const IndexPage = () => {
                   className={`flex justify-end col-span-2 py-8 pr-10 border-r border-gray-500 ${
                     isFirst && 'pt-32'
                   }`}>
-                  <StaticImage
-                    className='rounded-md w-[70%]'
-                    src='https://picsum.photos/480'
-                    alt=''
-                    aspectRatio={16 / 9}
-                  />
+                  <div className='relative rounded-md w-[70%] group'>
+                    <GatsbyImage image={cover} alt={project.title} />
+                    {/* cover opacity overlay */}
+                    <div className='absolute top-0 w-full h-full bg-gray-700 rounded-md opacity-50 group-hover:opacity-0' />
+                  </div>
                 </div>
                 <div className={`col-span-3 py-12 ${isFirst && 'pt-32'}`}>
                   <div className='relative pl-8 my-4 text-2xl font-bold'>
@@ -173,7 +133,10 @@ const IndexPage = () => {
                     <div className='absolute w-6 h-[1px] bg-gray-500 top-1/2 transform -translate-y-1/2 left-0' />
                   </div>
                   <div className='pl-8 space-y-3'>
-                    <div className='text-xl '>{project.about}</div>
+                    <div className='text-xl'>{project.about}</div>
+                    <div className='text-base w-[50%] text-gray-400'>
+                      {node.excerpt}
+                    </div>
                     <div className='flex space-x-2'>
                       {project.tags.map((tag) => (
                         <div
@@ -184,10 +147,10 @@ const IndexPage = () => {
                       ))}
                     </div>
                     <div className='flex space-x-4'>
-                      <a href={project.sourceCodeLink}>
+                      <a href={project.source}>
                         <FiGithub size={20} />
                       </a>
-                      <a href={project.siteLink}>
+                      <a href={project.site}>
                         <FiLink size={20} />
                       </a>
                     </div>
@@ -201,5 +164,27 @@ const IndexPage = () => {
     </div>
   );
 };
+
+export const query = graphql`
+  {
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+          about
+          site
+          source
+          tags
+          title
+          cover {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+            }
+          }
+        }
+        excerpt(pruneLength: 999)
+      }
+    }
+  }
+`;
 
 export default IndexPage;

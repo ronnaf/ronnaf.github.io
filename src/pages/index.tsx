@@ -39,6 +39,7 @@ const IndexPage = ({ data }) => {
             <StaticImage
               src='../images/logo.png'
               alt='logo'
+              loading='eager'
               width={60}
               height={60}
             />
@@ -76,6 +77,7 @@ const IndexPage = ({ data }) => {
           <StaticImage
             src='../images/landing_graphics.png'
             alt='landing_graphics'
+            loading='eager'
           />
           <div className='text-xs text-gray-500'>lol i tried 😂</div>
         </div>
@@ -91,6 +93,7 @@ const IndexPage = ({ data }) => {
             src='../images/arrow_down.png'
             alt='arrow_down'
             height={45}
+            loading='eager'
           />
         </button>
       </div>
@@ -147,10 +150,16 @@ const IndexPage = ({ data }) => {
                       ))}
                     </div>
                     <div className='flex space-x-4'>
-                      <a href={project.source}>
+                      <a
+                        href={project.source}
+                        target='_blank'
+                        rel='noopener noreferrer'>
                         <FiGithub size={20} />
                       </a>
-                      <a href={project.site}>
+                      <a
+                        href={project.site}
+                        target='_blank'
+                        rel='noopener noreferrer'>
                         <FiLink size={20} />
                       </a>
                     </div>

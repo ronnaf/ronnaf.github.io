@@ -154,7 +154,7 @@ const IndexPage = () => {
           {projects.map((project, i) => {
             const isFirst = i === 0;
             return (
-              <div className='grid grid-cols-5'>
+              <div key={`${project.title}_${i}`} className='grid grid-cols-5'>
                 <div
                   className={`flex justify-end col-span-2 py-8 pr-10 border-r border-gray-500 ${
                     isFirst && 'pt-32'

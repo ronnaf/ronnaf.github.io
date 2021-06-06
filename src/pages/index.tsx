@@ -123,10 +123,14 @@ const IndexPage = ({ data }) => {
                   className={`flex justify-end col-span-2 py-8 pr-10 border-r border-gray-500 ${
                     isFirst && 'pt-32'
                   }`}>
-                  <div className='relative rounded-md w-[70%] group'>
-                    <GatsbyImage image={cover} alt={project.title} />
-                    {/* cover opacity overlay */}
-                    <div className='absolute top-0 w-full h-full bg-gray-700 rounded-md opacity-50 group-hover:opacity-0' />
+                  <div className='w-[70%]'>
+                    <GatsbyImage
+                      className='rounded-md filter brightness-75 hover:filter-none'
+                      image={cover}
+                      alt={project.title}
+                      style={{ aspectRatio: '16 / 9' }}
+                      objectPosition='center top'
+                    />
                   </div>
                 </div>
                 <div className={`col-span-3 py-12 ${isFirst && 'pt-32'}`}>
@@ -137,7 +141,7 @@ const IndexPage = ({ data }) => {
                   </div>
                   <div className='pl-8 space-y-3'>
                     <div className='text-xl'>{project.about}</div>
-                    <div className='text-base w-[50%] text-gray-400'>
+                    <div className='text-base w-[75%] text-gray-400'>
                       {node.excerpt}
                     </div>
                     <div className='flex space-x-2'>
@@ -150,18 +154,22 @@ const IndexPage = ({ data }) => {
                       ))}
                     </div>
                     <div className='flex space-x-4'>
-                      <a
-                        href={project.source}
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        <FiGithub size={20} />
-                      </a>
-                      <a
-                        href={project.site}
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        <FiLink size={20} />
-                      </a>
+                      {project.source && (
+                        <a
+                          href={project.source}
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          <FiGithub size={20} />
+                        </a>
+                      )}
+                      {project.site && (
+                        <a
+                          href={project.site}
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          <FiLink size={20} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

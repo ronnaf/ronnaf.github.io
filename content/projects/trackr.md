@@ -1,4 +1,5 @@
 ---
+date: 8
 title: 'trackr'
 cover: './trackr.png'
 about: 'time tracker desktop app'

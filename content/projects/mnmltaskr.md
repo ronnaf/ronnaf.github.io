@@ -1,4 +1,5 @@
 ---
+date: 1
 title: 'mnmltaskr'
 cover: './mnmltaskr.png'
 about: 'my very first full-stack react-based app!'

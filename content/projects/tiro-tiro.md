@@ -1,11 +1,12 @@
 ---
+date: 6
 title: 'tiro-tiro'
 cover: './tiro-tiro.png'
 about: 'a tower defense game'
 source: 'https://github.com/ronnaf/tiro-tiro'
 site: null
 tags:
-  - phaser 3
+  - phaser-3
   - capacitor
   - webpack
 ---

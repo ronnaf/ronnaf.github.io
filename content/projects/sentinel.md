@@ -1,4 +1,5 @@
 ---
+date: 5
 title: 'sentinel'
 cover: './sentinel.png'
 about: 'rfid door lock admin panel'

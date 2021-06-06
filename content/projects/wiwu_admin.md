@@ -1,4 +1,5 @@
 ---
+date: 4
 title: 'wiwu admin'
 cover: './wiwu_admin.png'
 about: 'web admin panel for wiwu'

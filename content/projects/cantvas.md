@@ -1,4 +1,5 @@
 ---
+date: 2
 title: 'cantvas'
 cover: './cantvas.png'
 about: 'canvas instructure clone (sort of)'

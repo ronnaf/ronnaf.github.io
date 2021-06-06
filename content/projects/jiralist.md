@@ -1,4 +1,5 @@
 ---
+date: 10
 title: 'jiralist'
 cover: './jiralist.png'
 about: 'issue tracker + checklist via jira'

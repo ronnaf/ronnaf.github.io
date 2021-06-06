@@ -1,4 +1,5 @@
 ---
+date: 7
 title: 'webtown'
 cover: './webtown.png'
 about: 'a no-nonsense offline webtoon reader'

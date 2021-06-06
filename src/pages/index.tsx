@@ -188,7 +188,7 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
       <div className="w-3/4 pb-8 mx-auto md:hidden">
-        <div className="text-xs text-gray-400">version: 1.0.non-mobile-friendly</div>
+        <div className="text-xs text-gray-400">version: 1.0.1</div>
       </div>
     </div>
   );

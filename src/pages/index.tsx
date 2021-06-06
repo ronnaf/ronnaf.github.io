@@ -41,13 +41,7 @@ const IndexPage = ({ data }) => {
         {/* logo */}
         <div className="flex justify-center w-full md:py-14 py-7">
           <button className="focus:outline-none">
-            <StaticImage
-              src="../images/logo.png"
-              alt="logo"
-              loading="eager"
-              width={60}
-              height={60}
-            />
+            <StaticImage src="../images/logo.png" alt="logo" width={60} height={60} />
           </button>
         </div>
         {/* intro */}
@@ -90,11 +84,7 @@ const IndexPage = ({ data }) => {
         </div>
         {/* drawing */}
         <div className="absolute w-2/3 right-0 md:w-[35%] md:right-[25%] transform md:translate-x-1/2 -translate-y-1/2 top-[75%] md:top-[60%] text-center">
-          <StaticImage
-            src="../images/landing_graphics.png"
-            alt="landing_graphics"
-            loading="eager"
-          />
+          <StaticImage src="../images/landing_graphics.png" alt="landing_graphics" />
           <div className="hidden text-xs text-gray-500 md:block">lol i tried 😂</div>
         </div>
         {/* arrow */}
@@ -104,12 +94,7 @@ const IndexPage = ({ data }) => {
           <div className="px-1 mb-4 text-white group-hover:bg-yellow-200 group-hover:text-blue">
             see my stuff
           </div>
-          <StaticImage
-            src="../images/arrow_down.png"
-            alt="arrow_down"
-            height={45}
-            loading="eager"
-          />
+          <StaticImage src="../images/arrow_down.png" alt="arrow_down" height={45} />
         </button>
       </div>
       {/* projects section */}

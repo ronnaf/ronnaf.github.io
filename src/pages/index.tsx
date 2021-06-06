@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { FiGithub, FiLink } from 'react-icons/fi';
 import { levelsOfInfo, socialLinks } from '../constants';
 import { ProjectNode } from '../models/ProjectNode';
+import config from '../../package.json';
 
 // todo: soc
 
@@ -33,7 +34,7 @@ const IndexPage = ({ data }) => {
       </div>
       {/* bottom-right floating status */}
       <div className="fixed bottom-0 right-0 hidden p-10 md:block">
-        <div className="text-xs text-gray-400">version: 1.0.non-mobile-friendly</div>
+        <div className="text-xs text-gray-400">version: {config.version}</div>
       </div>
       {/* landing section */}
       <div ref={landingRef} className="relative w-3/4 h-screen mx-auto">
@@ -188,7 +189,7 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
       <div className="w-3/4 pb-8 mx-auto md:hidden">
-        <div className="text-xs text-gray-400">version: 1.0.1</div>
+        <div className="text-xs text-gray-400">version: {config.version}</div>
       </div>
     </div>
   );

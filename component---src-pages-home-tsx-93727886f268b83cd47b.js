@@ -1,2 +1,0 @@
-(self.webpackChunkronnaf=self.webpackChunkronnaf||[]).push([[373],{6284:function(n,e,l){"use strict";l.r(e);var r=l(7294);e.default=function(){return r.createElement("div",null,"Hello world")}}}]);
-//# sourceMappingURL=component---src-pages-home-tsx-93727886f268b83cd47b.js.map
